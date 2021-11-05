@@ -1,0 +1,12 @@
+services:
+   anaconda:
+      build:
+         context: .
+         dockerfile: Dockerfile
+      tty: true
+      mem_limit: 4012M
+#      runtime: nvidia
+      ports:
+         - "8888:8888"
+#      volumes:
+#         - ./notebooks/:/var/ml/encoder4editing/notebooks/
