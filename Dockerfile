@@ -48,7 +48,7 @@ RUN set -x && \
     find /opt/conda/ -follow -type f -name '*.js.map' -delete && \
     /opt/conda/bin/conda clean -afy
 
-COPY .. ./encoder4editing/
+COPY ./environment ./encoder4editing/environment
 
 SHELL ["/bin/bash", "--login", "-c"]
 RUN conda env create -f encoder4editing/environment/e4e_env.yaml
@@ -65,6 +65,8 @@ RUN apt-get -y update && \
 RUN apt-get -y install g++ gcc
 
 RUN DEBIAN_FRONTEND="noninteractive" TZ="Europe/London" apt-get install -y cmake protobuf-compiler
+
+COPY . ./encoder4editing/
 
 EXPOSE 8888
 
